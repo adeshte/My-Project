@@ -1,0 +1,56 @@
+<html>
+                                             
+    <head>                                                                                                                  
+	  <title>Weather App</title>             
+	</head>                 
+    <body>                                                        
+	                
+	<form>                                                      
+		 <label>City</label>       
+		 <input type="text" id="city">   
+		 
+		 <button type="submit" value="submit" id="submit">Get Weather</button>    
+	</form>
+	 
+	 <p><span id="cityname"></span> Temp : <span id="temp"></span></p>
+	
+	  <script>                                                                      
+	                                                  // Steps to write API Pogram 
+						                              // HTML :- Form Tag (input) || Paragraph Tag (output)
+						                              // JAVASCRIPT :- Options (Provided Code) || Fetch Function || Call the Fetch Function					   
+const options = {                                                                          
+	method: 'GET',                                                              
+	headers: {
+		'X-RapidAPI-Key': 'f055118c02msh4913631f18c7ccap1b801bjsn2ec83ea3f449',
+		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+	}
+};
+
+  const weatherapp = (city) => {
+    
+	cityname.innerHTML = city
+	
+	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city, options)
+	       .then( (response) => {
+		    return response.json()
+			}).then( (data) => {
+			  console.log(data)
+			  
+			    temp.innerHTML = data.temp
+				
+			})	
+			
+		}
+
+   		submit.addEventListener("click", (e) => {
+		  e.preventDefault()
+		  weatherapp(city.value)
+		 })
+
+   weatherapp("pune")		 
+		
+	  </script>
+	</body>
+
+
+</html>
